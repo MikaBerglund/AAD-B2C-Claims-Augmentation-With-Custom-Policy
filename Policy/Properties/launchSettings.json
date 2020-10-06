@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BuildCustomPolicy": {
+      "commandName": "Project",
+      "commandLineArgs": "--e Development --t mikaberglund --a 566cacf4-6cfe-4213-909a-2feabc87fc3c --p 49a8c32a-30d0-4ad3-a1f7-b3c9e1f843b5 --c B2C_1A_MyTokenEncryptionKey --s B2C_1A_MyTokenSigningKey"
+    }
+  }
+}

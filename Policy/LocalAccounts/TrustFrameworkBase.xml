@@ -455,7 +455,7 @@
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 
           <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_secret" StorageReferenceId="{{TokenSigningKeyContainerName}}" />
           </CryptographicKeys>
 
           <!-- We need this here to suppress the SelfAsserted provider from invoking SSO on validation profiles. -->
@@ -638,7 +638,7 @@
             <Item Key="language.button_continue">Create</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_secret" StorageReferenceId="{{TokenSigningKeyContainerName}}" />
           </CryptographicKeys>
           <InputClaims>
             <InputClaim ClaimTypeReferenceId="email" />
@@ -699,7 +699,7 @@
             <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your account has been locked. Contact your support person to unlock it, then try again.</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_secret" StorageReferenceId="{{TokenSigningKeyContainerName}}" />
           </CryptographicKeys>
           <IncludeInSso>false</IncludeInSso>
           <OutputClaims>
@@ -721,7 +721,7 @@
             <Item Key="ContentDefinitionReferenceId">api.localaccountpasswordreset</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_secret" StorageReferenceId="{{TokenSigningKeyContainerName}}" />
           </CryptographicKeys>
           <InputClaims>
             <InputClaim ClaimTypeReferenceId="objectId" />
@@ -792,8 +792,8 @@
             <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-            <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+            <Key Id="issuer_secret" StorageReferenceId="{{TokenSigningKeyContainerName}}" />
+            <Key Id="issuer_refresh_token_key" StorageReferenceId="{{TokenEncryptionKeyContainerName}}" />
           </CryptographicKeys>
           <InputClaims />
           <OutputClaims />

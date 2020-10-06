@@ -4,9 +4,11 @@ This repository contains instructions and sample code for creating a custom poli
 
 ## Placeholders
 
-- `{{yourtenant}}` - The name of the tenant, i.e. `{{yourtenant}}.onmicrosoft.com`.
+- `{{YourTenant}}` - The name of the tenant, i.e. `{{yourtenant}}.onmicrosoft.com`.
 - `{{IdentityExperienceFrameworkAppId}}` - The application ID (client ID) of your Identity Experience Framework App.
 - `{{ProxyIdentityExperienceFrameworkAppId}}` - The application ID (client ID) of your Proxy Identity Experience Framework App.
+- `{{TokenSigningKeyContainerName}}` - The name of the token signing key container (described below).
+- `{{TokenEncryptionKeyContainerName}}` - The name of the token encryption key container (described below).
 
 ## Signing and Encryption Keys
 
