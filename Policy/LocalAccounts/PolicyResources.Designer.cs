@@ -155,9 +155,9 @@ namespace BuildCustomPolicy.LocalAccounts {
         ///  &lt;BasePolicy&gt;
         ///    &lt;TenantId&gt;{{yourtenant}}.onmicrosoft. [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TrustFrameworkExtensions_Common {
+        internal static string TrustFrameworkExtensions {
             get {
-                return ResourceManager.GetString("TrustFrameworkExtensions_Common", resourceCulture);
+                return ResourceManager.GetString("TrustFrameworkExtensions", resourceCulture);
             }
         }
     }
