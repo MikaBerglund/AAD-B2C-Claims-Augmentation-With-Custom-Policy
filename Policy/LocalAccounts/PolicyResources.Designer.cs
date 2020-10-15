@@ -143,41 +143,21 @@ namespace BuildCustomPolicy.LocalAccounts {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;TrustFrameworkPolicy 
-        ///  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-        ///  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
-        ///  xmlns=&quot;http://schemas.microsoft.com/online/cpim/schemas/2013/06&quot; 
-        ///  PolicySchemaVersion=&quot;0.3.0.0&quot; 
-        ///  TenantId=&quot;{{yourtenant}}.onmicrosoft.com&quot; 
-        ///  PolicyId=&quot;B2C_1A_TrustFrameworkCommonExtensions&quot; 
+        ///&lt;TrustFrameworkPolicy
+        ///  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        ///  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///  xmlns=&quot;http://schemas.microsoft.com/online/cpim/schemas/2013/06&quot;
+        ///  PolicySchemaVersion=&quot;0.3.0.0&quot;
+        ///  TenantId=&quot;{{yourtenant}}.onmicrosoft.com&quot;
+        ///  PolicyId=&quot;B2C_1A_TrustFrameworkExtensions&quot;
         ///  PublicPolicyUri=&quot;http://{{yourtenant}}.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions&quot;&gt;
-        ///  
+        ///
         ///  &lt;BasePolicy&gt;
-        ///    &lt;TenantId&gt;{{yourtenant [rest of string was truncated]&quot;;.
+        ///    &lt;TenantId&gt;{{yourtenant}}.onmicrosoft. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TrustFrameworkExtensions_Common {
             get {
                 return ResourceManager.GetString("TrustFrameworkExtensions_Common", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;TrustFrameworkPolicy 
-        ///  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-        ///  xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
-        ///  xmlns=&quot;http://schemas.microsoft.com/online/cpim/schemas/2013/06&quot; 
-        ///  PolicySchemaVersion=&quot;0.3.0.0&quot; 
-        ///  TenantId=&quot;{{yourtenant}}.onmicrosoft.com&quot; 
-        ///  PolicyId=&quot;B2C_1A_TrustFrameworkEnvironmentExtensions&quot; 
-        ///  PublicPolicyUri=&quot;http://{{yourtenant}}.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions&quot;&gt;
-        ///  
-        ///  &lt;BasePolicy&gt;
-        ///    &lt;TenantId&gt;{{yourt [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string TrustFrameworkExtensions_Env {
-            get {
-                return ResourceManager.GetString("TrustFrameworkExtensions_Env", resourceCulture);
             }
         }
     }

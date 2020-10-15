@@ -24,11 +24,10 @@ namespace BuildCustomPolicy
         {
             var path = await InitOutputDirAsync(options);
             await ProcessPolicyFileAsync(PolicyResources.TrustFrameworkBase, options, path, "01-TrustFrameworkBase.xml");
-            await ProcessPolicyFileAsync(PolicyResources.TrustFrameworkExtensions_Common, options, path, "02-TrustFrameworkExtensions.Common.xml");
-            await ProcessPolicyFileAsync(PolicyResources.TrustFrameworkExtensions_Env, options, path, $"03-TrustFrameworkExtensions.{options.Environment}.xml");
-            await ProcessPolicyFileAsync(PolicyResources.SignUpOrSignin, options, path, "04-SignUpOrSignin.xml");
-            await ProcessPolicyFileAsync(PolicyResources.PasswordReset, options, path, "05-PasswordReset.xml");
-            await ProcessPolicyFileAsync(PolicyResources.ProfileEdit, options, path, "06-ProfileEdit.xml");
+            await ProcessPolicyFileAsync(PolicyResources.TrustFrameworkExtensions_Common, options, path, "02-TrustFrameworkExtensions.xml");
+            await ProcessPolicyFileAsync(PolicyResources.SignUpOrSignin, options, path, "03-SignUpOrSignin.xml");
+            await ProcessPolicyFileAsync(PolicyResources.PasswordReset, options, path, "04-PasswordReset.xml");
+            await ProcessPolicyFileAsync(PolicyResources.ProfileEdit, options, path, "05-ProfileEdit.xml");
         }
 
         private static async Task<string> InitOutputDirAsync(PolicyOptions options)
