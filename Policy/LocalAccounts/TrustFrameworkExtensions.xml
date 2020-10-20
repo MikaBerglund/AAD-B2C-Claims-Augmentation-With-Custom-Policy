@@ -12,12 +12,24 @@
     <TenantId>{{yourtenant}}.onmicrosoft.com</TenantId>
     <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
   </BasePolicy>
-  <BuildingBlocks>
 
+  <BuildingBlocks>
+    <ClaimsSchema>
+      <ClaimType Id="role">
+        <DisplayName>Role</DisplayName>
+        <DataType>stringCollection</DataType>
+        <UserHelpText>Contains one or more roles associated with a user.</UserHelpText>
+      </ClaimType>
+      <ClaimType Id="upn">
+        <DisplayName>User Principal Name</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>The User Principal Name uniquely identifies the user.</UserHelpText>
+      </ClaimType>
+    </ClaimsSchema>
   </BuildingBlocks>
 
   <ClaimsProviders>
-    
+
     <ClaimsProvider>
       <DisplayName>Local Account SignIn</DisplayName>
       <TechnicalProfiles>
@@ -33,7 +45,34 @@
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
-    
+
+    <ClaimsProvider>
+      <DisplayName>External Claims Source</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="GetUserClaimsFromAPI">
+          <DisplayName>Get claims for user from external system.</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ServiceUrl">{{ClaimsApiUrl}}</Item>
+            <Item Key="SendClaimsIn">Body</Item>
+            <Item Key="AuthenticationType">None</Item>
+            <Item Key="AllowInsecureAuthInProduction">true</Item>
+          </Metadata>
+          <InputClaims>
+            <!-- Claims sent to your REST API -->
+            <InputClaim ClaimTypeReferenceId="objectId" />
+            <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="upn" />
+          </InputClaims>
+          <OutputClaims>
+            <!-- Claims parsed from your REST API -->
+            <OutputClaim ClaimTypeReferenceId="role" />
+            <OutputClaim ClaimTypeReferenceId="upn" />
+          </OutputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
   </ClaimsProviders>
 
   <UserJourneys>
@@ -69,7 +108,13 @@
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="RESTGetUserClaims" TechnicalProfileReferenceId="GetUserClaimsFromAPI" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
 
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
@@ -83,11 +128,13 @@
             <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
           </ClaimsProviderSelections>
         </OrchestrationStep>
+
         <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
           </ClaimsExchanges>
         </OrchestrationStep>
+
         <OrchestrationStep Order="3" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
@@ -99,7 +146,14 @@
             <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
           </ClaimsExchanges>
         </OrchestrationStep>
-        <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="RESTGetUserClaims" TechnicalProfileReferenceId="GetUserClaimsFromAPI" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="6" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
 
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
@@ -107,17 +161,27 @@
 
     <UserJourney Id="PasswordReset">
       <OrchestrationSteps>
+
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="PasswordResetUsingEmailAddressExchange" TechnicalProfileReferenceId="LocalAccountDiscoveryUsingEmailAddress" />
           </ClaimsExchanges>
         </OrchestrationStep>
+
         <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordUsingObjectId" />
           </ClaimsExchanges>
         </OrchestrationStep>
-        <OrchestrationStep Order="3" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="RESTGetUserClaims" TechnicalProfileReferenceId="GetUserClaimsFromAPI" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>

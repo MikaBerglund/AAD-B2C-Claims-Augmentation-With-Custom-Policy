@@ -60,6 +60,7 @@ namespace BuildCustomPolicy
                 .Replace("{{ProxyIdentityExperienceFrameworkAppId}}", options.ProxyIdentityExperienceFrameworkAppId)
                 .Replace("{{TokenSigningKeyContainerName}}", options.TokenSigningKeyContainer)
                 .Replace("{{TokenEncryptionKeyContainerName}}", options.TokenEncryptionKeyContainer)
+                .Replace("{{ClaimsApiUrl}}", options.ClaimsApiUrl)
                 ;
 
             await File.WriteAllTextAsync(Path.Combine(outputPath, fileName), content);
@@ -88,6 +89,9 @@ namespace BuildCustomPolicy
 
         [Option('c', "encryptionkeycontainer", Default = "B2C_1A_TokenEncryptionKeyContainer", Required = false, HelpText = "The name of the encryption key container to use with your policy.")]
         public string TokenEncryptionKeyContainer { get; set; }
+
+        [Option('u', "claimsapiurl", Required = true, HelpText = "The full URL to the API endpoint that will return claims for the given user.")]
+        public string ClaimsApiUrl { get; set; }
 
     }
 }
