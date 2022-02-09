@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1FC51A6-E8EE-4944-8580-9B5297021D4D}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildCustomPolicy", "Policy\BuildCustomPolicy.csproj", "{98E0DCD1-6AD8-468E-9A4B-A893F7D6E0BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsAugmentor", "FunctionApp\ClaimsAugmentor\ClaimsAugmentor.csproj", "{E1C306C3-A3FC-434D-B5F7-60134336B95E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{98E0DCD1-6AD8-468E-9A4B-A893F7D6E0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98E0DCD1-6AD8-468E-9A4B-A893F7D6E0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98E0DCD1-6AD8-468E-9A4B-A893F7D6E0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1C306C3-A3FC-434D-B5F7-60134336B95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C306C3-A3FC-434D-B5F7-60134336B95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C306C3-A3FC-434D-B5F7-60134336B95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C306C3-A3FC-434D-B5F7-60134336B95E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
